@@ -108,7 +108,7 @@ class AddTaskScreen extends StatelessWidget {
                               viewController.descriptionController.text,
                           priorityLevel: viewController.selectedLvl,
                           dueDate: viewController.dateTime);
-                      viewController.tasks[index!] = tmpTask;
+                      viewController.getList()[index!] = tmpTask;
                       Navigator.pop(context);
                     } else {
                       viewController.addTask(Task(

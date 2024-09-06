@@ -7,6 +7,7 @@ import '../model/task_model.dart';
 class ViewController extends GetxController {
   final TextEditingController tittleController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
+  final TextEditingController searchController = TextEditingController();
 
   final RxList<Task> _tasks = RxList([
     Task(
@@ -45,6 +46,60 @@ class ViewController extends GetxController {
     descriptionController.clear();
     setSelectedLvl('Low');
     setDateTime(DateTime.now());
+  }
+
+  int getPriorityValue(String priority) {
+    switch (priority) {
+      case "High":
+        return 3;
+      case "Medium":
+        return 2;
+      case "Low":
+        return 1;
+      default:
+        return 0;
+    }
+  }
+
+  void sortTasksByPriority() {
+    tasks.sort((a, b) => getPriorityValue(b.priorityLevel)
+        .compareTo(getPriorityValue(a.priorityLevel)));
+  }
+
+  void sortTasksByDueDate() {
+    tasks.sort((a, b) => a.dueDate.compareTo(b.dueDate));
+  }
+
+  final RxList<Task> _searchedList = RxList([]);
+  List<Task> get searchedList => _searchedList;
+
+  setSearchedList(List<Task> value) {
+    _searchedList.value = value;
+  }
+
+  final RxBool _isSearchedEnabled = RxBool(false);
+  bool get isSearchedEnabled => _isSearchedEnabled.value;
+
+  setIsSearchedEnabled(bool value) {
+    _isSearchedEnabled.value = value;
+  }
+
+  List<Task> getList() {
+    if (isSearchedEnabled) {
+      return searchedList;
+    } else {
+      return tasks;
+    }
+  }
+
+  serchForTittle(String text) {
+    List<Task> tempList = [];
+    for (var task in _tasks) {
+      if (task.title.toLowerCase().contains(text.toLowerCase())) {
+        tempList.add(task);
+      }
+    }
+    setSearchedList(tempList);
   }
 
   Rxn _addDateTime = Rxn();
