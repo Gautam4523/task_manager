@@ -92,7 +92,7 @@ class ViewController extends GetxController {
     }
   }
 
-  serchForTittle(String text) {
+  searchForTittle(String text) {
     List<Task> tempList = [];
     for (var task in _tasks) {
       if (task.title.toLowerCase().contains(text.toLowerCase())) {
@@ -107,18 +107,6 @@ class ViewController extends GetxController {
   setDateTime(DateTime value) {
     _addDateTime.value = value;
   }
-
-  // RxString _addTittle = RxString('');
-  // String get addTittle => _addTittle.value;
-  // setAddTittle(String value) {
-  //   _addTittle.value = value;
-  // }
-  //
-  // RxString _addDescription = RxString('');
-  // String get addDescription => _addDescription.value;
-  // setAddDescription(String value) {
-  //   _addDescription.value = value;
-  // }
 
   RxString _selectedLvl = RxString('Low');
   String get selectedLvl => _selectedLvl.value;

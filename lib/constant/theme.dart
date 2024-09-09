@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-final kTittle = TextStyle(color: Colors.white);
+final kTittle = TextStyle(color: Colors.white, fontSize: 20);
 final kSubTittle = TextStyle(color: Colors.teal.shade900);
 final kAddTasktittle =
     TextStyle(fontSize: 35, color: Colors.white, fontWeight: FontWeight.bold);

@@ -33,7 +33,7 @@ class AddTaskScreen extends StatelessWidget {
           children: [
             Text('Add Task', style: kAddTasktittle),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 100),
+              padding: EdgeInsets.symmetric(horizontal: 50),
               child: TextField(
                 controller: viewController.tittleController,
                 style: TextStyle(color: Colors.white),
@@ -44,7 +44,7 @@ class AddTaskScreen extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 100),
+              padding: EdgeInsets.symmetric(horizontal: 50),
               child: TextField(
                 controller: viewController.descriptionController,
                 style: TextStyle(color: Colors.white),

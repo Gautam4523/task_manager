@@ -43,58 +43,17 @@ class TaskScreen extends StatelessWidget {
             Row(
               children: [
                 Search(
-                  width: 200,
+                  width: 150,
                   hintText: 'Search by Title',
                   searchText: (String text) {
                     if (text.isEmpty) {
                       viewController.setIsSearchedEnabled(false);
                     } else {
                       viewController.setIsSearchedEnabled(true);
-                      viewController.serchForTittle(text);
+                      viewController.searchForTittle(text);
                     }
                   },
                 ),
-                // Container(
-                //   width: 200,
-                //   height: 40,
-                //   child: TextField(
-                //     controller: viewController.searchController,
-                //     style: TextStyle(color: Colors.white),
-                //     keyboardType: TextInputType.text,
-                //     decoration: kAddTextFieldDecoration.copyWith(
-                //       hintText: 'Search here',
-                //       suffixIcon: IconButton(
-                //           onPressed: () {},
-                //           icon: Icon(
-                //             Icons.search,
-                //             color: Colors.white,
-                //           )),
-                //       hintStyle: kTittle,
-                //       enabledBorder: OutlineInputBorder(
-                //         borderRadius: BorderRadius.circular(20),
-                //         borderSide: BorderSide(color: Colors.white),
-                //       ),
-                //       focusedBorder: OutlineInputBorder(
-                //         borderRadius: BorderRadius.circular(20),
-                //         borderSide: BorderSide(color: Colors.white),
-                //       ),
-                //     ),
-                //     onChanged: (search) {
-                //       // if (viewController.searchController.text ==
-                //       //         viewController.tittleController.text ||
-                //       //     viewController.searchController.text ==
-                //       //         viewController.descriptionController.text ||
-                //       //     viewController.searchController.text ==
-                //       //         viewController.selectedLvl ||
-                //       //     viewController.searchController.text ==
-                //       //         viewController.dateTime) {}
-                //     },
-                //     onSubmitted: (text) {
-                //       print('text$text'
-                //           '');
-                //     },
-                //   ),
-                // ),
                 PopupMenuButton<String>(
                   onSelected: (value) {
                     if (value == 'Priority') {
@@ -141,9 +100,6 @@ class TaskScreen extends StatelessWidget {
                       builder: (context) => AddTaskScreen(
                           index: index, tasks: viewController.getList()[index]),
                     );
-
-                    // _showTaskDialog(context,
-                    //     index: index, task: task); // Edit Task
                   },
                 ),
                 IconButton(
